@@ -1,0 +1,27 @@
+@if (annualData().length === 0) {
+
+<p>Please enter some values and press "Calculate"</p>
+} @else {
+<table>
+  <thead>
+    <tr>
+      <th>Year</th>
+      <th>Investment Value</th>
+      <th>Interest (Year)</th>
+      <th>Total Interest</th>
+      <th>Invested Capital</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (row of annualData(); track $index) {
+    <tr>
+      <td>{{ row.year }}</td>
+      <td>{{ row.valueEndOfYear | currency : 'R' }}</td>
+      <td>{{ row.interest | currency : 'R' }}</td>
+      <td>{{ row.totalInterest | currency : 'R' }}</td>
+      <td>{{ row.totalAmountInvested | currency : 'R' }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
