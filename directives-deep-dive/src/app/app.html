@@ -5,9 +5,20 @@
 
   <app-auth />
 
-  @if (isAdmin()) {
-  <p>Only Admins should see this!</p>
-  }
+  <!-- @if (isAdmin()) { -->
+  <!-- <ng-template appAuthDirective="admin"> -->
+  <p *appAuthDirective="'admin'" appLogDirective class="protected-content admin">
+    Only Admins should see this!
+  </p>
+  <p *appAuthDirective="'user'" class="protected-content unauthenticated">
+    Regular users should see this!
+  </p>
+  <p *appAuthDirective="'guest'" class="protected-content authenticated">
+    Guest users should see this!
+  </p>
+
+  <!-- </ng-template> -->
+  <!-- } -->
 </main>
 
 <router-outlet />
